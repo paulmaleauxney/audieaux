@@ -95,12 +95,13 @@
             note.className = 'note';
             note.innerHTML = '&#9835;'; // Unicode musical note symbol
             note.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            note.style.top = `${Math.random() * 100}vh`; // Random vertical position
             note.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random duration
             musicalNotesContainer.appendChild(note);
         }
 
         // Create an initial set of notes
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 50; i++) {
             createNote();
         }
 
