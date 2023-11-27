@@ -51,8 +51,6 @@
             font-size: 2em;
             animation: float 3s infinite;
         }
-
-        /* Add more styles and animations as needed */
     </style>
 </head>
 <body>
@@ -60,12 +58,16 @@
     <header>
         <div id="banner">AUDIEAUX</div>
         <div id="musicalNotes">
-            <!-- Add musical notes dynamically using JavaScript -->
+            <!-- Musical notes using Unicode characters -->
+            <div class="note">&#9835;</div>
+            <div class="note">&#9833;</div>
+            <div class="note">&#9834;</div>
+            <!-- Add more notes as needed -->
         </div>
     </header>
 
     <script>
-        // JavaScript to dynamically create and float musical notes
+        // JavaScript to dynamically float musical notes
         const musicalNotesContainer = document.getElementById('musicalNotes');
 
         function createNote() {
