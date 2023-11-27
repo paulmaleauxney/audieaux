@@ -11,6 +11,7 @@
             padding: 0;
             overflow: hidden;
             display: flex;
+            background-color: #f0f0f0; /* Set the background color for the whole body */
         }
 
         header {
@@ -20,11 +21,29 @@
             padding: 20px;
             position: relative;
             width: 200px; /* Set a fixed width for the side menu */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
         }
 
         #banner {
             font-size: 2em;
             margin-bottom: 20px;
+        }
+
+        #sideMenu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menuButton {
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         #musicalNotes {
@@ -49,21 +68,6 @@
             position: absolute;
             font-size: 2em;
             animation: float 3s infinite;
-        }
-
-        #sideMenu {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .menuButton {
-            padding: 10px;
-            background-color: #555;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-            text-decoration: none;
         }
     </style>
 </head>
