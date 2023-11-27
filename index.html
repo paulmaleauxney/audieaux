@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            display: flex;
         }
 
         header {
@@ -18,6 +19,7 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            width: 200px; /* Set a fixed width for the side menu */
         }
 
         #banner {
@@ -26,13 +28,8 @@
         }
 
         #musicalNotes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            flex-grow: 1; /* Take remaining width */
+            position: relative;
             font-family: 'Noto Sans Symbols', sans-serif; /* Specify the external font */
         }
 
@@ -53,14 +50,37 @@
             font-size: 2em;
             animation: float 3s infinite;
         }
+
+        #sideMenu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menuButton {
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div id="banner">AUDIEAUX</div>
-        <div id="musicalNotes"></div>
+        <nav id="sideMenu">
+            <a href="record.html" class="menuButton">Record</a>
+            <a href="explore.html" class="menuButton">Explore</a>
+            <a href="about.html" class="menuButton">About Us</a>
+        </nav>
     </header>
+
+    <div id="musicalNotes">
+        <!-- Content goes here -->
+    </div>
 
     <script>
         // JavaScript to dynamically float musical notes
