@@ -32,6 +32,7 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
+            font-family: 'Arial', sans-serif; /* Specify a web-safe font */
         }
 
         @keyframes float {
@@ -79,7 +80,7 @@
             musicalNotesContainer.appendChild(note);
         }
 
-        // Create initial set of notes
+        // Create an initial set of notes
         for (let i = 0; i < 10; i++) {
             createNote();
         }
