@@ -12,6 +12,7 @@
             overflow: hidden;
             display: flex;
             background-color: #f0f0f0; /* Set the background color for the whole body */
+            font-family: 'Noto Sans Symbols', sans-serif; /* Specify the external font */
         }
 
         header {
@@ -19,7 +20,7 @@
             color: white;
             text-align: center;
             padding: 20px;
-            position: center;
+            position: relative;
             width: 100%;
         }
 
@@ -45,12 +46,16 @@
             font-size: 0.8em; /* Adjusted font size */
         }
 
-        #centerNote {
-            font-size: 8em; /* Increased musical note size */
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        #musicalNotes {
+            flex-grow: 1; /* Take remaining width */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 50px); /* Adjust the size of the musical notes */
+            gap: 5px;
+            padding: 20px;
+        }
+
+        .note {
+            font-size: 2em;
             animation: colorChange 5s infinite;
         }
 
@@ -78,7 +83,29 @@
         </nav>
     </header>
 
-    <div id="centerNote">&#9835;</div>
+    <div id="musicalNotes">
+        <!-- Content goes here -->
+    </div>
+
+    <script>
+        // JavaScript to dynamically float musical notes
+        const musicalNotesContainer = document.getElementById('musicalNotes');
+
+        function createNote() {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.innerHTML = '&#9835;'; // Unicode musical note symbol
+            musicalNotesContainer.appendChild(note);
+        }
+
+        // Create an initial set of notes
+        for (let i = 0; i < 50; i++) {
+            createNote();
+        }
+
+        // Add more notes every few seconds (adjust as needed)
+        setInterval(createNote, 5000);
+    </script>
 
 </body>
 </html>
