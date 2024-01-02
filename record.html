@@ -37,6 +37,7 @@
             cursor: pointer;
             text-decoration: none;
             font-size: 1.5em;
+            margin-bottom: 20px;
         }
 
         #audioPlayer {
@@ -59,7 +60,60 @@
     <audio id="audioPlayer" controls></audio>
 
     <script>
-        // ... (Include the JavaScript code for recording and saving audio here)
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
+        document.getElementById('recordButton').addEventListener('click', toggleRecording);
+
+        async function toggleRecording() {
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+
+                    mediaRecorder.ondataavailable = event => {
+                        if (event.data.size > 0) {
+                            audioChunks.push(event.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        document.getElementById('audioPlayer').src = audioUrl;
+
+                        // Send the audio data to the server for storage
+                        sendAudioToServer(audioBlob);
+
+                        // Reset button text and recording state
+                        document.getElementById('recordButton').textContent = 'Record';
+                        isRecording = false;
+                    };
+
+                    mediaRecorder.start();
+                    document.getElementById('recordButton').textContent = 'Stop Recording';
+                    isRecording = true;
+                } catch (error) {
+                    console.error('Error accessing microphone:', error);
+                }
+            } else {
+                mediaRecorder.stop();
+            }
+        }
+
+        function sendAudioToServer(audioBlob) {
+            const formData = new FormData();
+            formData.append('audio', audioBlob);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => console.log('Server response:', data))
+            .catch(error => console.error('Error sending audio to server:', error));
+        }
     </script>
 
 </body>
