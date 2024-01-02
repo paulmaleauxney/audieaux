@@ -54,33 +54,9 @@
 
         .note {
             font-size: 2em;
-            animation: colorChange 5s infinite, float 3s infinite;
+            color: #FF6347; /* Tomato */
             position: absolute;
             transform-origin: top left;
-        }
-
-        @keyframes colorChange {
-            0% {
-                color: #FF6347; /* Tomato */
-            }
-            50% {
-                color: #66CDAA; /* MediumAquaMarine */
-            }
-            100% {
-                color: #FF6347; /* Tomato */
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
@@ -100,7 +76,7 @@
     </div>
 
     <script>
-        // JavaScript to dynamically float musical notes
+        // JavaScript to dynamically place musical notes
         const musicalNotesContainer = document.getElementById('musicalNotes');
 
         function createNote() {
