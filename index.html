@@ -20,10 +20,7 @@
             text-align: center;
             padding: 20px;
             position: relative;
-            width: 200px; /* Set a fixed width for the side menu */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center the content horizontally */
+            width: 100%;
         }
 
         #banner {
@@ -46,38 +43,25 @@
             text-decoration: none;
         }
 
-        #recordButton {
-            padding: 15px;
-            background-color: #555;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1.5em;
+        #centerNote {
+            font-size: 5em;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: colorChange 5s infinite;
         }
 
-        #musicalNotes {
-            flex-grow: 1; /* Take remaining width */
-            position: relative;
-            font-family: 'Noto Sans Symbols', sans-serif; /* Specify the external font */
-        }
-
-        @keyframes float {
+        @keyframes colorChange {
             0% {
-                transform: translateY(0);
+                color: #FF6347; /* Tomato */
             }
             50% {
-                transform: translateY(-20px);
+                color: #66CDAA; /* MediumAquaMarine */
             }
             100% {
-                transform: translateY(0);
+                color: #FF6347; /* Tomato */
             }
-        }
-
-        .note {
-            position: absolute;
-            font-size: 2em;
-            animation: float 3s infinite;
         }
     </style>
 </head>
@@ -85,39 +69,14 @@
 
     <header>
         <div id="banner">AUDIEAUX</div>
-        <a href="record.html" id="recordButton" class="menuButton">Record</a>
         <nav id="sideMenu">
+            <a href="record.html" class="menuButton">Record</a>
             <a href="explore.html" class="menuButton">Explore</a>
             <a href="about.html" class="menuButton">About Us</a>
         </nav>
     </header>
 
-    <div id="musicalNotes">
-        <!-- Content goes here -->
-    </div>
-
-    <script>
-        // JavaScript to dynamically float musical notes
-        const musicalNotesContainer = document.getElementById('musicalNotes');
-
-        function createNote() {
-            const note = document.createElement('div');
-            note.className = 'note';
-            note.innerHTML = '&#9835;'; // Unicode musical note symbol
-            note.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-            note.style.top = `${Math.random() * 100}vh`; // Random vertical position
-            note.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random duration
-            musicalNotesContainer.appendChild(note);
-        }
-
-        // Create an initial set of notes
-        for (let i = 0; i < 38; i++) {
-            createNote();
-        }
-
-        // Add more notes every few seconds (adjust as needed)
-        setInterval(createNote, 5000);
-    </script>
+    <div id="centerNote">&#9835;</div>
 
 </body>
 </html>
