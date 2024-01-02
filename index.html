@@ -48,15 +48,15 @@
 
         #musicalNotes {
             flex-grow: 1; /* Take remaining width */
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Adjusted the grid columns */
-            gap: 5px;
-            padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
 
         .note {
             font-size: 2em;
-            animation: colorChange 5s infinite;
+            animation: colorChange 5s infinite, float 3s infinite;
+            position: absolute;
+            transform-origin: top left;
         }
 
         @keyframes colorChange {
@@ -68,6 +68,18 @@
             }
             100% {
                 color: #FF6347; /* Tomato */
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
             }
         }
     </style>
@@ -95,11 +107,13 @@
             const note = document.createElement('div');
             note.className = 'note';
             note.innerHTML = '&#9835;'; // Unicode musical note symbol
+            note.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            note.style.top = `${Math.random() * 100}vh`; // Random vertical position
             musicalNotesContainer.appendChild(note);
         }
 
         // Create an initial set of notes
-        for (let i = 0; i < 200; i++) { // Increased the number of notes
+        for (let i = 0; i < 50; i++) {
             createNote();
         }
 
