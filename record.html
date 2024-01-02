@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Record and Save</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record and Save</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        #recordButton {
+            padding: 15px;
+            background-color: #555;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        #audioPlayer {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body>
-  <button id="recordButton">Record</button>
-  <audio id="audioPlayer" controls></audio>
 
-  <script>
-    // ... (Include the JavaScript code for recording and saving audio here)
-  </script>
+    <header>
+        <h1>Record and Save</h1>
+    </header>
+
+    <button id="recordButton">Record</button>
+    <audio id="audioPlayer" controls></audio>
+
+    <script>
+        // ... (Include the JavaScript code for recording and saving audio here)
+    </script>
+
 </body>
 </html>
