@@ -98,18 +98,21 @@
     </div>
 
     <script>
-        // JavaScript to dynamically place evenly spaced musical notes
+        // JavaScript to dynamically place musical notes in a grid
         const musicalNotesContainer = document.getElementById('musicalNotes');
 
-        const numberOfNotes = 100; // Adjust as needed
+        const rows = 5; // Adjust the number of rows
+        const columns = 10; // Adjust the number of columns
 
-        for (let i = 0; i < numberOfNotes; i++) {
-            const note = document.createElement('div');
-            note.className = 'note';
-            note.innerHTML = '&#9835;'; // Unicode musical note symbol
-            note.style.left = `${(i * 100) / numberOfNotes}vw`;
-            note.style.top = `${Math.random() * 100}vh`;
-            musicalNotesContainer.appendChild(note);
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < columns; col++) {
+                const note = document.createElement('div');
+                note.className = 'note';
+                note.innerHTML = '&#9835;'; // Unicode musical note symbol
+                note.style.left = `${(col * 100) / columns}vw`;
+                note.style.top = `${(row * 100) / rows}vh`;
+                musicalNotesContainer.appendChild(note);
+            }
         }
     </script>
 
