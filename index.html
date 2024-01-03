@@ -13,7 +13,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
             grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
-            background: linear-gradient(to right, #f0f0f0 49.5%, #ffffff 49.5%, #ffffff 50.5%, #f0f0f0 50.5%);
             font-family: 'Noto Sans Symbols', sans-serif; /* Specify the external font */
         }
 
@@ -25,17 +24,20 @@
             position: relative;
             width: 100%;
             grid-column: span 100%;
+            z-index: 2; /* Ensure the header is on top of the notes */
         }
 
         #banner {
             font-size: 2em;
             margin-bottom: 20px;
+            grid-column: span 100%;
         }
 
         #sideMenu {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            z-index: 2; /* Ensure the menu is on top of the notes */
         }
 
         .menuButton {
@@ -52,17 +54,13 @@
         #musicalNotes {
             grid-column: span 100%;
             grid-row: span 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: space-around;
-            background: inherit;
-            overflow: hidden;
+            position: relative;
+            z-index: 1; /* Ensure the notes are behind the header and menu */
         }
 
         .note {
             font-size: 2em;
-            position: relative;
+            position: absolute;
             color: #FF6347; /* Tomato */
         }
     </style>
@@ -90,6 +88,8 @@
             const note = document.createElement('div');
             note.className = 'note';
             note.innerHTML = '&#9835;'; // Unicode musical note symbol
+            note.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            note.style.top = `${Math.random() * 100}vh`; // Random vertical position
             musicalNotesContainer.appendChild(note);
         }
 
