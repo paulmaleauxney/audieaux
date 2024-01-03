@@ -13,7 +13,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
             grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
-            font-family: 'Noto Sans Symbols', sans-serif; /* Specify the external font */
+            font-family: 'Noto Sans Symbols', sans-serif;
         }
 
         header {
@@ -22,9 +22,8 @@
             text-align: center;
             padding: 20px;
             position: relative;
-            width: 100%;
             grid-column: span 100%;
-            z-index: 2; /* Ensure the header is on top of the notes */
+            z-index: 2;
         }
 
         #banner {
@@ -37,7 +36,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            z-index: 2; /* Ensure the menu is on top of the notes */
+            z-index: 2;
         }
 
         .menuButton {
@@ -47,21 +46,39 @@
             text-align: center;
             cursor: pointer;
             text-decoration: none;
-            width: 100px; /* Adjusted button width */
-            font-size: 0.8em; /* Adjusted font size */
+            width: 100px;
+            font-size: 0.8em;
         }
 
         #musicalNotes {
             grid-column: span 100%;
             grid-row: span 100%;
             position: relative;
-            z-index: 1; /* Ensure the notes are behind the header and menu */
+            z-index: 1;
         }
 
         .note {
             font-size: 2em;
             position: absolute;
-            color: #FF6347; /* Tomato */
+            animation: colorChange 5s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #FF6347; /* Tomato */
+            }
+            25% {
+                color: #FFD700; /* Gold */
+            }
+            50% {
+                color: #00FA9A; /* MediumSpringGreen */
+            }
+            75% {
+                color: #4682B4; /* SteelBlue */
+            }
+            100% {
+                color: #FF6347; /* Tomato */
+            }
         }
     </style>
 </head>
@@ -88,17 +105,15 @@
             const note = document.createElement('div');
             note.className = 'note';
             note.innerHTML = '&#9835;'; // Unicode musical note symbol
-            note.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-            note.style.top = `${Math.random() * 100}vh`; // Random vertical position
+            note.style.left = `${Math.random() * 100}vw`;
+            note.style.top = `${Math.random() * 100}vh`;
             musicalNotesContainer.appendChild(note);
         }
 
-        // Create an initial set of notes
         for (let i = 0; i < 50; i++) {
             createNote();
         }
 
-        // Add more notes every few seconds (adjust as needed)
         setInterval(createNote, 5000);
     </script>
 
