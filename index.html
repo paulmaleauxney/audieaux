@@ -10,23 +10,17 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-            grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
             font-family: 'Noto Sans Symbols', sans-serif;
             background-color: #f0f0f0; /* Set the background color for the whole body */
+            text-align: center; /* Center the content horizontally */
         }
 
         header {
             background-color: #333;
             color: white;
-            text-align: center;
             padding: 20px;
             position: relative;
             z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         #banner {
@@ -36,7 +30,7 @@
 
         #sideMenu {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             gap: 10px;
             z-index: 2;
         }
@@ -53,8 +47,7 @@
         }
 
         #musicalNotes {
-            grid-column: span 100%;
-            grid-row: span 100%;
+            margin-top: 50px; /* Adjust the margin as needed */
             position: relative;
             z-index: 1;
         }
